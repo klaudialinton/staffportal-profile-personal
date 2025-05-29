@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Personal - PETRO-EXCEL SDN BHD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Navigation Bar */
+        .navbar {
+            background-color: #f8f8f8;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .navbar a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        .navbar .user-info {
+            margin-right: 20px;
+        }
+        .navbar .user-info a {
+            color: #333;
+        }
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            height: 100%;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+        .sidebar a {
+            display: block;
+            margin: 15px 0;
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        /* Main Content */
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        .info-section {
+            border: 1px solid #000;
+            padding: 20px;
+            width: 450px;
+            margin: 20px;
+               display: grid;
+               grid-template-columns: auto auto;
+               gap: 10px 40px;
+        }
+        .info-section h3 {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+        }
+        .info-section a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .update-btn {
+      margin-top: 40px;
+      align-self: flex-end;
+      background-color: #0b2d3e;
+      color: white;
+      padding: 15px 30px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div>
+            <a href="#">HOME</a>
+            <a href="#">PROFILE</a>
+            <a href="#">CALENDER</a>
+            <a href="#">REQUEST FORM</a>
+        </div>
+        <div class="user-info">
+            Hi User, <a href="#">Log Out</a>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#">PERSONAL</a>
+        <a href="#">COMPETENCY</a>
+        <a href="#">CERTIFICATION</a>
+        <a href="#">PAY SLIP</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="info-section" id="infoSection">
+            <h3>Profile Personal</h3><br>
+            <div>Full Name:</div><div><span class="data">John Doe</span></div>
+      <div>IC No:</div><div><span class="data">010203-01-1234</span></div>
+      <div>No. Tel:</div><div><span class="data">012-3456789</span></div>
+      <div>Position:</div><div><span class="data">Developer</span></div>
+      <div>Department:</div><div><span class="data">IT</span></div>
+      <div>Home Address:</div><div><span class="data">123 Home St</span></div>
+      <div>Current Address:</div><div><span class="data">456 Work Rd</span></div>
+      <div>Personal Email:</div><div><span class="data">john@gmail.com</span></div>
+      <div>Company Email:</div><div><span class="data">john@company.com</span></div>
+      <div>Date of Joined Company:</div><div><span class="data">2020-01-01</span></div>
+      <div>Date of Birth:</div><div><span class="data">1990-05-10</span></div>
+      <div>Blood Type:</div><div><span class="data">O+</span></div>
+      <div>Emergency Call No:</div><div><span class="data">019-9999999</span></div>
+      <div>Name of Emergency Call:</div><div><span class="data">019-9999999</span></div>
+      <div>Relationship:</div><div><span class="data">019-9999999</span></div>
+      <div>Academy History:</div><div>University: <span class="data">ABC University</span></div>
+      <div></div><div>Major: <span class="data">Computer Science</span></div>
+      <div></div><div>High School: <span class="data">XYZ High School</span></div>
+       <div class="buttons">
+    <button class="update-btn" onclick="enableEdit()">Update Resume</button>
+    <button class="update-btn" id="saveBtn" onclick="saveEdit()" style="display:none;">Save</button>
+  </div>
+        </div>
+    </div>
+
+     
+      </div>
+    </div>
+
+    <script>
+  function enableEdit() {
+    const section = document.getElementById('infoSection');
+    const spans = section.querySelectorAll('.data');
+
+    spans.forEach(span => {
+      const text = span.textContent;
+      const input = document.createElement('input');
+      input.value = text;
+      span.replaceWith(input);
+    });
+
+    document.querySelector('button[onclick="enableEdit()"]').style.display = 'none';
+    document.getElementById('saveBtn').style.display = 'inline-block';
+  }
+
+  function saveEdit() {
+    const section = document.getElementById('infoSection');
+    const inputs = section.querySelectorAll('input');
+
+    inputs.forEach(input => {
+      const text = input.value;
+      const span = document.createElement('span');
+      span.className = 'data';
+      span.textContent = text;
+      input.replaceWith(span);
+    });
+
+    document.getElementById('saveBtn').style.display = 'none';
+    document.querySelector('button[onclick="enableEdit()"]').style.display = 'inline-block';
+  }
+</script>
+</body>
+</html>
